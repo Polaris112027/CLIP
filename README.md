@@ -14,6 +14,9 @@ CLIP is pre-trained using large-scale text-image pairs and can be directly trans
 ### CLIP training process
 <img width="516" alt="image" src="https://user-images.githubusercontent.com/113433202/189938321-a5a4fb7d-235e-4995-b2ee-f43c7b166df8.png">
 
+### CLIP output
+![image](https://user-images.githubusercontent.com/113433202/189941083-112ead8b-bfd9-4e61-aeb0-53137c83abfe.png)
+
 ## Word2vec
 Word2Vec is Word to Vector, a method for converting a word to a vector.
 
