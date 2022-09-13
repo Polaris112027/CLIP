@@ -6,7 +6,7 @@ CLIP is pre-trained using large-scale text-image pairs and can be directly trans
 ## Zero-shot image classification method
 
 ### Image Classification
-![517063291594231564](https://user-images.githubusercontent.com/113433202/189910758-3afa5aba-1a72-4192-80f4-92280838ba58.jpg)
+![image](https://user-images.githubusercontent.com/113433202/189939920-d2e4fb2e-a1c3-49fc-80fd-90540be1ef49.png)
 
 ### Image Search
 ![149300099319477992](https://user-images.githubusercontent.com/113433202/189911404-2098c560-b5e4-468f-b3f5-819a51876af3.jpg)
