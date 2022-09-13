@@ -1,4 +1,5 @@
 
+
 # Contrastive Language-Image Pretraining
 
 CLIP is pre-trained using large-scale text-image pairs and can be directly transmitted to imagenet to achieve zero classification without fine-tuning the image labels. The CLIP model could lead the development of CVs to an era of large-scale pre-learning and text-to-image interconnection.
@@ -12,7 +13,7 @@ CLIP is pre-trained using large-scale text-image pairs and can be directly trans
 ![149300099319477992](https://user-images.githubusercontent.com/113433202/189911404-2098c560-b5e4-468f-b3f5-819a51876af3.jpg)
 
 ### CLIP training process
-<img width="516" alt="image" src="https://user-images.githubusercontent.com/113433202/189938321-a5a4fb7d-235e-4995-b2ee-f43c7b166df8.png">
+https://user-images.githubusercontent.com/113433202/189943637-4d8cd1f7-9550-4ccd-8313-09309ae78772.mp4
 
 ### CLIP output
 ![image](https://user-images.githubusercontent.com/113433202/189941083-112ead8b-bfd9-4e61-aeb0-53137c83abfe.png)
