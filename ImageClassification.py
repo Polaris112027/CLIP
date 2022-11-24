@@ -11,6 +11,26 @@ from tqdm.autonotebook import tqdm
 import torch
 import cv2
 
+en_model = SentenceTransformer('clip-ViT-B-32')
+
+simplified_words = []
+
+english_dict='1w.txt'
+    
+with open(file = english_dict, mode =  'r', encoding='utf-8') as f:
+    i = 0
+    for line in f:
+        i += 1
+        if i <= 31:
+            continue
+        #traditional_words.append(line.split()[0])
+        if len(line.split())>=1:
+            simplified_words.append(line.split()[0])
+            #print(simplified_words) 
+    labels=simplified_words
+# And compute the text embeddings for these labels
+en_emb = en_model.encode(labels, convert_to_tensor=True)
+#cos_scores=[[]for i in range(len(labels))]
 
 def function():
     # We use the original CLIP model for computing image embeddings and English text embeddings
@@ -27,11 +47,31 @@ def function():
     '''
     # And compute the embeddings for these images
     img_emb = en_model.encode(Image.open('test.png'), convert_to_tensor=True)
+    
+    #cos_scores=[[]for i in range(len(labels))]
+    # Now, we compute the cosine similarity between the images and the labels
+    cos_scores = util.cos_sim(img_emb, en_emb)
+  
+    # Then we look which label has the highest cosine similarity with the given images
+    #pred_labels = torch.argmax(cos_scores, dim=1)
+    p=[]
+    a=[]
+    for i in range(5):
+        q=torch.argmax(cos_scores, dim=1)
+        p.append(q)
+        cos_scores[0][q]=0
+        
+    #multi_model = SentenceTransformer('clip-ViT-B-32-multilingual-v1')
 
+    #return labels[pred_labels]
+    for i in range(5):
+        a.append(labels[p[i]])
+    out=" ".join(a)    
+    return out
     # Then, we define our labels as text. Here, we use 4 labels
     ##labels = ['dog', 'dogs', 'cat', 'Paris at night', 'Paris']
     
-    chinese_dict = 'Own.u8'
+    #chinese_dict = 'Own.u8'
     
     '''
     file=['adventure.txt','belles_lettres.txt','editorial.txt','fiction.txt','government.txt','hobbies.txt','humor.txt','learned.txt','lore.txt','mystery.txt','news.txt','religion.txt','reviews.txt','romance.txt','science_fiction.txt']
@@ -57,8 +97,8 @@ def function():
     for k in range(15):
         merge(chinese_dict, file[k])
 
-   '''
-    #chinese_dict = 'Own.u8'
+
+
 
     #traditional_words = []
     simplified_words = []
@@ -82,26 +122,8 @@ def function():
     
     # And compute the text embeddings for these labels
     en_emb = en_model.encode(labels, convert_to_tensor=True)
-
-    # Now, we compute the cosine similarity between the images and the labels
-    cos_scores = util.cos_sim(img_emb, en_emb)
-  
-    # Then we look which label has the highest cosine similarity with the given images
-    #pred_labels = torch.argmax(cos_scores, dim=1)
-    p=[]
-    a=[]
-    for i in range(5):
-        q=torch.argmax(cos_scores, dim=1)
-        p.append(q)
-        cos_scores[0][q]=0
-        
-    #multi_model = SentenceTransformer('clip-ViT-B-32-multilingual-v1')
-
-    #return labels[pred_labels]
-    for i in range(5):
-        a.append(labels[p[i]])
-    out=" ".join(a)    
-    return out
+   '''
+    
 
     '''
     # Then, we define our labels as text. Here, we use 4 labels
@@ -132,23 +154,6 @@ def ff(name):
     chinese_dict = 'Own.u8'
     
     simplified_words = []
-
-    english_dict='1w.txt'
-    
-    with open(file = english_dict, mode =  'r', encoding='utf-8') as f:
-        i = 0
-        for line in f:
-            i += 1
-            if i <= 31:
-                continue
-            #traditional_words.append(line.split()[0])
-            if len(line.split())>=1:
-                simplified_words.append(line.split()[0])
-                #print(simplified_words) 
-        labels=simplified_words
-        
-    # And compute the text embeddings for these labels
-    en_emb = en_model.encode(labels, convert_to_tensor=True)
 
     # Now, we compute the cosine similarity between the images and the labels
     cos_scores = util.cos_sim(img_emb, en_emb)
@@ -212,6 +217,19 @@ def accuracy(a,pic_number):
     return(acc)
                    
  
+
+            
+    
+        
+   
+    
+
+
+    
+    
+    
+  
+
 
             
     
